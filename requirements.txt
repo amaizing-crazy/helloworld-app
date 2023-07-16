@@ -1,0 +1,9 @@
+requests
+flask
+flask_json
+flask_bootstrap
+Jinja2
+json2html
+simplejson
+gevent
+gunicorn
