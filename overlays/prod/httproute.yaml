@@ -1,0 +1,20 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: helloworld
+spec:
+  parentRefs:
+  - name: helloworld-gateway-prod
+  rules:
+    - matches:
+      - path:
+          value: "/hello-prod"
+      filters:
+      - type: URLRewrite
+        urlRewrite:
+          path:
+            type: ReplacePrefixMatch
+            replacePrefixMatch: /hello
+      backendRefs:
+      - name: helloworld-prod
+        port: 5004

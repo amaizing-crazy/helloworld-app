@@ -9,5 +9,6 @@ resources:
 - ../../base
 
 patches:
-- path: configmap-test.yaml
-- path: http-route-test.yaml
+- path: configmap.yaml
+- path: httproute.yaml
+- path: gateway.yaml

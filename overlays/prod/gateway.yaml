@@ -1,0 +1,12 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: helloworld-gateway
+spec:
+  listeners:
+  - name: http
+    port: 81
+    protocol: HTTP
+    allowedRoutes:
+      namespaces:
+        from: Same

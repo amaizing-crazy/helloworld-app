@@ -8,5 +8,6 @@ resources:
 - ../../base
 
 patches:
-- path: configmap-prod.yaml
-- path: http-route-prod.yaml
+- path: configmap.yaml
+- path: httproute.yaml
+- path: gateway.yaml
