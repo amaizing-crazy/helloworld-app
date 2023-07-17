@@ -9,3 +9,4 @@ resources:
 
 patches:
 - path: configmap-prod.yaml
+- path: http-route-prod.yaml

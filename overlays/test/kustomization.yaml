@@ -10,3 +10,4 @@ resources:
 
 patches:
 - path: configmap-test.yaml
+- path: http-route-test.yaml
