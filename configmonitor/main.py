@@ -45,14 +45,14 @@ def kill_pods(labels):
 # It takes the configmap name as the argument and uses it to search for configmonitors
 # that have the configmap name in its spec
 def getPodLabels(configmap):
-    url = "{}/apis/magalix.com/v1/namespaces/{}/configmonitors".format(
+    url = "{}/apis/helloworld.app/v1/namespaces/{}/configmonitors".format(
         base_url, namespace)
     r = requests.get(url)
     # Issue the HTTP request to the appropriate endpoint
     response = r.json()
     # Extract the podSelector part from each object in the response
     pod_labels_json = [i['spec']['podSelector']
-              for i in response['items'] if i['spec']['configmap'] == "flaskapp-config"]
+              for i in response['items'] if i['spec']['configmap'] == "the-map"]
     result = [list(l.keys())[0] + "=" + l[list(l.keys())[0]]
               for l in pod_labels_json]
     # The result is a list of labels
@@ -75,13 +75,11 @@ def event_loop():
         configmap_name = obj["object"]["metadata"]["name"]
         if event_type == "MODIFIED":
             log.info("Modification detected")
-            # If the type is MODIFIED then we extract the pod labels by 
-using the getPodLabels function
+            # If the type is MODIFIED then we extract the pod labels by using the getPodLabels function
             # passing the configmap name as a parameter
             labels = getPodLabels(configmap_name)
             # Once we have the labels, we can use them to find and kill the Pods by calling the
             # kill_pods function
             kill_pods(labels)
-
 
 event_loop()

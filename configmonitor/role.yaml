@@ -1,0 +1,11 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: config-monitor-crd
+rules:
+- apiGroups:
+  - helloworld.app
+  resources:
+  - configmonitor
+  - configmonitor/finalizers
+  verbs: [ get, list, create, update, delete, deletecollection, watch ]
